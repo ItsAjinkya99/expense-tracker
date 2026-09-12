@@ -1,0 +1,60 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Ll]ib/
+[Tt]est[Rr]esults/
+
+# Visual Studio / .NET
+.vs/
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+*.pdb
+*.cache
+*.pidb
+*.svclog
+*.ncb
+*.aps
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+
+# NuGet
+packages/
+*.nupkg
+*.snupkg
+.nuget/
+project.lock.json
+
+# ASP.NET / local secrets
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+*.db
+*.db-shm
+*.db-wal
+
+# JetBrains Rider / IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+*.DotSettings.user
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Frontend / tooling (safe if present)
+node_modules/
+dist/
+build/
+coverage/
