@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{C135AFCD-C587-48F5-9478-D45A5C15ED8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "backend\Domain\Domain.csproj", "{C135AFCD-C587-48F5-9478-D45A5C15ED8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{A1493D2A-CBA7-406D-B3EC-C44143F506F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "backend\Application\Application.csproj", "{A1493D2A-CBA7-406D-B3EC-C44143F506F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{9BF42170-8DF4-4BBD-938C-55457A0009E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "backend\Infrastructure\Infrastructure.csproj", "{9BF42170-8DF4-4BBD-938C-55457A0009E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{30CB52E1-BDFC-4447-ACC3-E4B14F91A1B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "backend\API\API.csproj", "{30CB52E1-BDFC-4447-ACC3-E4B14F91A1B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
