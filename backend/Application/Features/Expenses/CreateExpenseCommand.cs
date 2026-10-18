@@ -1,6 +1,7 @@
 using Domain.Entities;
 using Domain.Repositories;
 using Domain.ValueObjects;
+using FluentValidation;
 using MediatR;
 
 namespace Application.Features.Expenses;
@@ -13,14 +14,9 @@ public record CreateExpenseCommand(
     Guid CategoryId,
     DateTime ExpenseDateUtc) : IRequest<Guid>;
 
-public class CreateExpenseCommandHandler : IRequestHandler<CreateExpenseCommand, Guid>
+internal class CreateExpenseCommandHandler(IExpenseRepository expenseRepository) : IRequestHandler<CreateExpenseCommand, Guid>
 {
-    private readonly IExpenseRepository _expenseRepository;
-
-    public CreateExpenseCommandHandler(IExpenseRepository expenseRepository)
-    {
-        _expenseRepository = expenseRepository;
-    }
+    private readonly IExpenseRepository _expenseRepository = expenseRepository;
 
     public async Task<Guid> Handle(CreateExpenseCommand request, CancellationToken cancellationToken)
     {
@@ -30,5 +26,19 @@ public class CreateExpenseCommandHandler : IRequestHandler<CreateExpenseCommand,
 
         await _expenseRepository.AddAsync(expense, cancellationToken);
         return expense.Id;
+    }
+}
+
+public class CreateExpenseCommandValidator : AbstractValidator<CreateExpenseCommand>
+{
+    public CreateExpenseCommandValidator()
+    {
+        RuleFor(x => x.Title).NotEmpty().WithMessage("Title is required.").MaximumLength(200)
+            .WithMessage("Title must not exceed 200 characters.");
+        RuleFor(x => x.Amount).GreaterThan(0).WithMessage("Amount must be greater than 0.");
+        RuleFor(x => x.Currency).NotEmpty().WithMessage("Currency is required.");
+        RuleFor(x => x.CategoryId).NotEmpty().WithMessage("CategoryId is required.");
+        RuleFor(x => x.ExpenseDateUtc).LessThanOrEqualTo(DateTime.UtcNow)
+            .WithMessage("Expense date cannot be in the future.");
     }
 }

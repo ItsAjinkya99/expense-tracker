@@ -20,4 +20,14 @@ public class UserRepository(AppDbContext context) : IUserRepository
         
         await _context.SaveChangesAsync(cancellationToken);
     }
+
+    public async Task<User> GetByEmailAsync(string email, CancellationToken cancellationToken)
+    {
+        var user = await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Email == email, cancellationToken);
+        if (user == null)
+        {
+            throw new InvalidOperationException("User not found.");
+        }
+        return user;
+    }
 }

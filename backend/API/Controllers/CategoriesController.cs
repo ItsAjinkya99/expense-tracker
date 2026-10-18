@@ -15,10 +15,10 @@ public class CategoriesController(ISender sender) : ControllerBase
         {
             var categoryId = await _sender.Send(command, cancellationToken);
             
-            return CreatedAtAction(nameof(GetCategory), new { id = categoryId }, null);
+            return CreatedAtAction(nameof(GetCategory), new { userId = categoryId }, new {Id= categoryId});
         }
 
-    [HttpGet("user/{userId:guid}")]
+    [HttpGet("user/{userId:guid}", Name =nameof(GetCategory))]
     public async Task<IActionResult> GetCategory(Guid userId)
     {
         var categories  = await _sender.Send(new GetUserCategoriesQuery(userId));
