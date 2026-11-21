@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-login',
   imports: [],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <p>
       login works!
